@@ -8,14 +8,13 @@ import tn.esprit.spring.entities.Contrat;
 public interface IContratService {
 	
 	
-	public List<Contrat> getAllContrats();
+	public  int getAllContrats(List<Contrat> listecontrat);
 	
-	public int ajouterMonContrat(Contrat contrat);
+	public int ajouterMonContrat(List<Contrat> listecontrat,Contrat ctra1 );
 
-	public int deleteAllContratJPQL();
 	
-	public int deleteContratById(int reference) ;
+	public int deleteContrat(List<Contrat> listecontrat) ;
 
-	public int mettreAjoursalaireByreference(float salaire, int reference);
+	public int mettreAjourSalaire(Contrat ctra1,List<Contrat> listecontrat);
 	
 }

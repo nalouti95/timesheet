@@ -1,9 +1,7 @@
 package tn.esprit.spring.services;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,31 +30,55 @@ public class ContratServiceImpl implements IContratService {
 
 	private static final Logger l = LogManager.getLogger(ContratServiceImpl.class) ;
 
+	
+	List<Contrat> listecontrat = new ArrayList<>();
+	
+	
+	
+	Contrat ctra1 = new Contrat("ccp",2251786,100);
 
+	Contrat ctra2 = new Contrat("cp",2251786,160);
+	Contrat ctra3 = new Contrat("pp",1786,180);
+	
+	
 	//display 
-	public List<Contrat> getAllContrats() {
+	public int getAllContrats(List<Contrat> listecontrat) {
 		
-		List<Contrat> mcontrat = new ArrayList<>();
+		Iterator<Contrat> itr = listecontrat.iterator();
+	
 		
 		l.debug(" get all contrats is running now  ");
 		try {
-		return (List<Contrat>) contratRepository.findAll();
+			l.info(" get all  ....  ");
+			while(itr.hasNext())
+			{
+				System.out.println(itr.next().toString());
+			
+			}
+			l.info(" get all done ....  ");
+			      
+			return(1);	
+	
 		
 	} catch (Exception e) {
 		l.error("Erreur dans getAllContrats() : " + e); // after throwing 
-		return mcontrat;
+		return 0;
 	} 
 	}
 
 	//ajout contrat
 
-	public int ajouterMonContrat(Contrat contrat) {
+	public int ajouterMonContrat(List<Contrat> listecontrat,Contrat ctra1 ) {
 		
 		l.debug(" ajout contrats is running now  ");
 		
 		try {
 			l.info(" in ajout  ....  ");
-		contratRepository.save(contrat);
+			
+			listecontrat.add(ctra1);
+			
+			
+			
 		l.info(" out off add contrat  .....");
 		return 1;
 		
@@ -66,17 +88,20 @@ public class ContratServiceImpl implements IContratService {
 			} 
 	}
 
-	//supprimer tt contrat 
-	public int deleteAllContratJPQL() {
+	//supprimer premier contrat 
+	public int deleteContrat(List<Contrat> listecontrat) {
 		
-		l.debug(" delete all contrats is running now  ");
+	
+		    
+		
+		l.debug(" delete contrats is running now  ");
 		
 		try {
-			l.info(" in delete all contrats ....  ");
+			l.info(" in delete contrats ....  ");
 			
-		employeRepository.deleteAllContratJPQL();
+			listecontrat.remove(0);
 		
-		l.info(" out delete all contrats  .....");
+		l.info(" out delete  contrats  .....");
 		
 		return 1;
 		
@@ -86,42 +111,28 @@ public class ContratServiceImpl implements IContratService {
 			} 
 	}
 
-	//delete contrat by id 
 
-	public int deleteContratById(int reference) {
-		l.debug(" delete one contrats is running now  ");
-		try {
-			l.info(" in deleteContratById .....  ");
 
-		Contrat contratManagedEntity = contratRepository.findById(reference).get();
-		contratRepository.delete(contratManagedEntity);
-		l.info(" out deleteContratById contrats  .....");
-
-		return 1;
-		} catch (Exception e) {
-			l.error("Erreur dans deleteContratById  : " + e);
-			return 0 ;
-			} 
-
-	}
-
-	//maj de salaire d'un contrat preci
-
-	public int mettreAjoursalaireByreference(float salaire, int reference) {
+	public int mettreAjourSalaire(Contrat ctra1,List<Contrat> listecontrat) {
 		
 		l.debug(" maj de  contrats is running now  ");
 		try {
-			l.info(" in mettreAjoursalaireByreference .....  ");
-		Contrat contrat = contratRepository.findById(reference).get();
-		contrat.setSalaire(salaire);
-		contratRepository.save(contrat);
-		l.info(" out mettreAjoursalaireByreference  .....");
+			l.info(" in mettreAjoursalaire .....  ");
+		ctra1.setSalaire(10);
+		
+		listecontrat.set(1,ctra1);
+		
+		
+		l.info(" out mettreAjoursalaireDone .....");
 		return 1;
 		} catch (Exception e) {
-			l.error("Erreur dans mettreAjoursalaireByreference  : " + e);
+			l.error("Erreur dans mettreAjoursalaire  : " + e);
 			return 0 ;
 			} 
 	}
+
+
+
 
 
 
