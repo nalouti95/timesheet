@@ -41,31 +41,7 @@ public class ContratServiceImpl implements IContratService {
 	Contrat ctra3 = new Contrat("pp",1786,180);
 	
 	
-	//display 
-	public int getAllContrats(List<Contrat> listecontrat) {
-		
-		Iterator<Contrat> itr = listecontrat.iterator();
 	
-		
-		l.debug(" get all contrats is running now  ");
-		try {
-			l.info(" get all  ....  ");
-			while(itr.hasNext())
-			{
-				System.out.println(itr.next().toString());
-			
-			}
-			l.info(" get all done ....  ");
-			      
-			return(1);	
-	
-		
-	} catch (Exception e) {
-		l.error("Erreur dans getAllContrats() : " + e); // after throwing 
-		return 0;
-	} 
-	}
-
 	//ajout contrat
 
 	public int ajouterMonContrat(List<Contrat> listecontrat,Contrat ctra1 ) {
@@ -87,6 +63,31 @@ public class ContratServiceImpl implements IContratService {
 			return 0 ;
 			} 
 	}
+	//display 
+		public int getAllContrats(List<Contrat> listecontrat) {
+			
+			Iterator<Contrat> itr = listecontrat.iterator();
+		
+			
+			l.debug(" get all contrats is running now  ");
+			try {
+				l.info(" get all  ....  ");
+				while(itr.hasNext())
+				{
+					l.debug(itr.next().toString());
+				
+				}
+				l.info(" get all done ....  ");
+				      
+				return(1);	
+		
+			
+		} catch (Exception e) {
+			l.error("Erreur dans getAllContrats() : " + e); // after throwing 
+			return 0;
+		} 
+		}
+
 
 	//supprimer premier contrat 
 	public int deleteContrat(List<Contrat> listecontrat) {

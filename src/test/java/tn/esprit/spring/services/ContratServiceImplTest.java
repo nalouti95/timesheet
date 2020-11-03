@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.spring.entities.Contrat;
 
-public class ContratServiceImplTest {
+ class ContratServiceImplTest {
 	
 	
 
@@ -35,7 +35,7 @@ public class ContratServiceImplTest {
 	
 	
 	@Test
-	public void testajouterMonContrat() throws ParseException {
+	 void testajouterMonContrat() throws ParseException {
 		
 		Contrat c = new Contrat();
 		
@@ -54,7 +54,7 @@ public class ContratServiceImplTest {
 	}
 	
 	@Test
-	 public void testgetAllContrats() {
+	  void testgetAllContrats() {
 		
 				assertEquals(1,imp.getAllContrats(listecontrat));
 		
@@ -62,7 +62,7 @@ public class ContratServiceImplTest {
 	 }
 	
 	@Test
-	public void testmettreAjourSalaire() throws ParseException {
+	 void testmettreAjourSalaire() throws ParseException {
 		
 	Contrat c = new Contrat();
 		
@@ -80,7 +80,7 @@ public class ContratServiceImplTest {
 	}
 	
 	@Test
-	public void testdeleteContrat() {
+	 void testdeleteContrat() {
 		
 	
 		assertEquals(1,imp.deleteContrat(listecontrat));
